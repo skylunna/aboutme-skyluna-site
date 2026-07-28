@@ -1,0 +1,24 @@
+---
+import type { ExperienceItem } from '../data/siteData';
+
+interface Props {
+  items: ExperienceItem[];
+}
+const { items } = Astro.props;
+---
+
+<section class="mb-14">
+  <h2 class="text-lg font-semibold mb-5 pb-2 border-b border-gray-200">Experience</h2>
+  <div class="space-y-3">
+    {items.map((item) => (
+      <div class="flex justify-between items-baseline gap-4">
+        <div>
+          <span class="font-medium text-gray-900">{item.title}</span>
+          <span class="text-gray-400 mx-1.5">·</span>
+          <span class="text-gray-600">{item.company}</span>
+        </div>
+        <span class="text-sm text-gray-500 whitespace-nowrap">{item.period}</span>
+      </div>
+    ))}
+  </div>
+</section>

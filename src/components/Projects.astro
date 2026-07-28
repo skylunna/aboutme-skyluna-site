@@ -1,0 +1,33 @@
+---
+import type { ProjectItem } from '../data/siteData';
+
+interface Props {
+  items: ProjectItem[];
+}
+const { items } = Astro.props;
+---
+
+<section class="mb-14">
+  <h2 class="text-lg font-semibold mb-5 pb-2 border-b border-gray-200">Projects</h2>
+  <div class="space-y-5">
+    {items.map((project) => (
+      <div>
+        <h3 class="text-base font-medium">
+          {project.liveUrl ? (
+            <a href={project.liveUrl}>{project.name} &nearr;</a>
+          ) : project.githubUrl ? (
+            <a href={project.githubUrl}>{project.name}</a>
+          ) : (
+            <span class="text-gray-900">{project.name}</span>
+          )}
+        </h3>
+        <p class="text-sm text-gray-600 mt-1 leading-relaxed">{project.description}</p>
+        {project.tags.length > 0 && (
+          <p class="text-xs text-gray-400 mt-1.5">
+            {project.tags.join(' · ')}
+          </p>
+        )}
+      </div>
+    ))}
+  </div>
+</section>

@@ -1,11 +1,21 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+// src/pages/index.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Experience from '../components/Experience.astro';
+import Projects from '../components/Projects.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// 导入数据
+import { experiences, projects } from '../data/siteData';
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout title="Zheng Tianlun">
+  
+  <Hero />
+  
+  <!-- 将数据通过 Props 传递给组件 -->
+  <Experience items={experiences} />
+  
+  <Projects items={projects} />
+
+</BaseLayout>
